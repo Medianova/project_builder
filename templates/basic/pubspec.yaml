@@ -1,0 +1,10 @@
+name: '{name}'
+version: 0.0.1
+#description: Project description
+#author: Your Name <email@example.com>
+#homepage: https://www.example.com
+
+environment:
+  sdk: '>=1.0.0 <2.0.0'
+
+dependencies:
