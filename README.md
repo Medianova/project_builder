@@ -119,9 +119,6 @@ Please file reports on the [GitHub Issue Tracker][issueTracker].
 ## Contributing
 Contributions are more then welcome! Just clone the [repository][github] make changes and issue pull request.
 
-## Disclaimer
-This is not an official Google product.
-
 ## Thanks to
 This project uses two awesome packages:
 
