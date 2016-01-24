@@ -106,5 +106,18 @@ Where *{!name!}* and *{!authors!}* are placeholders.
 
 > Please note that you don't need to define *{!name!}* placeholder in *builder.json* because it will be automatically generated when running builder command from the name of the project you pass with *--name* option.
 
+## Issues and bugs
+
+Please file reports on the [GitHub Issue Tracker][issueTracker].
+
+## Contributing
+
+Contributions are more then welcome! Just clone the [repository][github] make changes and issue pull request.
+
+## Disclaimer
+
+This is not an official Google product.
+
 [github]: <https://github.com/Medianova/project_builder>
+[issueTracker]: <https://github.com/Medianova/project_builder/issues>
 [pubActivate]: <https://www.dartlang.org/tools/pub/cmd/pub-global.html>
