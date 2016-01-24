@@ -106,6 +106,12 @@ Where *{!name!}* and *{!authors!}* are placeholders.
 
 > Please note that you don't need to define *{!name!}* placeholder in *builder.json* because it will be automatically generated when running builder command from the name of the project you pass with *--name* option.
 
+## Goals
+
+* add bunch of different useful templates
+* add default values for placeholders
+* add optional switches
+
 ## Issues and bugs
 
 Please file reports on the [GitHub Issue Tracker][issueTracker].
