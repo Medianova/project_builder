@@ -1,6 +1,6 @@
 name: 'project_builder'
 version: 1.0.0
-description: Build simple dart project from custom templates.
+description: A scaffolding generator for dart project from custom templates.
 author: Borut Jegrisnik <borut@medianova.hr>
 homepage: https://github.com/Medianova/project_builder
 
