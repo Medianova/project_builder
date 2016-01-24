@@ -1,5 +1,4 @@
 # Project Builder
-
 Project builder is a scaffolding generator for dart projects with custom templates. With it you can:
 
 - build new projects based on template
@@ -9,7 +8,6 @@ Project builder is a scaffolding generator for dart projects with custom templat
 Project builder comes with executable file for easier access to project from global scope.
 
 ## Installation
-
 The easiest way to install this project is to activate it with pun command:
 
 ```sh
@@ -30,7 +28,6 @@ This will create builder executable file and add it to your global pub folder. I
 > You can find more info for activate command [here][pubActivate].
 
 ## Commands
-
 Builder has 4 commands:
 
 - list - lists all available templates
@@ -52,7 +49,6 @@ builder help build
 > You can run all commands with **-v** flag which will enable verbose mode and give you extra information.
 
 ## Usage
-
 Here are some examples what you can do:
 
 List all available templates:
@@ -76,7 +72,6 @@ builder build -n project1 -t basic -t "var1=some value 1" -t "var2= some value 2
 ```
 
 ## Templates
-
 Templates are stored in *project_builder/templates* folder. Here you can add new templates manually or create them by using *builder template copy* command.
 
 Each template has a special **builder.json** file which has:
@@ -113,23 +108,28 @@ Where *{!name!}* and *{!authors!}* are placeholders.
 > Please note that you don't need to define *{!name!}* placeholder in *builder.json* because it will be automatically generated when running builder command from the name of the project you pass with *--name* option.
 
 ## Goals
-
 * add bunch of different useful templates
 * add default values for placeholders
 * add optional switches
+* add global placeholders, like author, that can be used for all templates
 
 ## Issues and bugs
-
 Please file reports on the [GitHub Issue Tracker][issueTracker].
 
 ## Contributing
-
 Contributions are more then welcome! Just clone the [repository][github] make changes and issue pull request.
 
 ## Disclaimer
-
 This is not an official Google product.
+
+## Thanks to
+This project uses two awesome packages:
+
+* [args][argsLink] for parsing arguments
+* [ansicolor][ansicolorLink] for colored console output
 
 [github]: <https://github.com/Medianova/project_builder>
 [issueTracker]: <https://github.com/Medianova/project_builder/issues>
 [pubActivate]: <https://www.dartlang.org/tools/pub/cmd/pub-global.html>
+[argsLink]: <https://pub.dartlang.org/packages/args>
+[ansicolorLink]: <https://pub.dartlang.org/packages/ansicolor>
