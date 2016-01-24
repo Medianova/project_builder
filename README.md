@@ -10,7 +10,13 @@ Project builder comes with executable file for easier access to project from glo
 
 ## Installation
 
-The easiest way to install this project is to clone it from [GitHub] [github] and then add it to your global pub list:
+The easiest way to install this project is to activate it with pun command:
+
+```sh
+pub global activate project_builder
+```
+
+You can also clone it from [GitHub] [github] and then add it to your global pub list manually:
 
 ```sh
 git clone https://github.com/Medianova/project_builder.git project_builder
