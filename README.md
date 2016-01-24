@@ -1,9 +1,9 @@
 # Project Builder
 
-Project builder is a scaffolding generator for dart project with custom templates. With it you can:
+Project builder is a scaffolding generator for dart projects with custom templates. With it you can:
 
 - build new projects based on template
-- create new templates based on existing templates
+- create new templates based on existing template
 - use placeholders in templates
 
 Project builder comes with executable file for easier access to project from global scope.
@@ -64,7 +64,7 @@ Create new template *custom_basic* by copying template *basic*
 builder template copy -s basic -t custom_basic
 ```
 
-Build new dart projects called *project1* in directory */dart/project1* by using template basic and by replacing placeholders *var1* with *"some value 1"* and *var2* with *"some value 2"*
+Build new dart projects called *project1* in directory */dart/project1* by using template *basic* and by replacing placeholders *var1* with *"some value 1"* and *var2* with *"some value 2"*
 ```sh
 builder build -n project1 -t basic -t "var1=some value 1" -t "var2= some value 2" -d "/dart/"
 ```
@@ -75,9 +75,9 @@ Templates are stored in *project_builder/templates* folder. Here you can add new
 
 Each template has a special **builder.json** file which has:
 
-* description: short template description
-* placeholders: list of placeholders used in template which will be replaced with values when building new project
-* rename: list of files that needs to be renamed when building new project
+* **description**: short template description
+* **placeholders**: list of placeholders used in template which will be replaced with values when building new project
+* **rename**: list of files that needs to be renamed when building new project
 
 Here is an example of builder.json file:
 
