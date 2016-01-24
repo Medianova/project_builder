@@ -9,7 +9,6 @@ environment:
 
 dependencies:
   args: "^0.13.2"
-  path: "^1.3.9"
   ansicolor: "^0.0.9"
 
 executables:
