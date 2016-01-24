@@ -1,9 +1,6 @@
 {
   "description": "Basic console dart application",
-  "placeholders" : [
-    "author",
-    "title"
-  ],
+  "placeholders" : [],
   "rename" : [
     {
       "from": "lib/main.dart",
