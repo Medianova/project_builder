@@ -8,24 +8,19 @@ Project builder is a scaffolding generator for dart projects with custom templat
 Project builder comes with executable file for easier access to project from global scope.
 
 ## Installation
-The easiest way to install this project is to activate it with pun command:
-
-```sh
-pub global activate project_builder
-```
-
-You can also clone it from [GitHub] [github] and then add it to your global pub list manually:
+Clone project files from [GitHub] [github] and then run pub get to fetch dependencies:
 
 ```sh
 git clone https://github.com/Medianova/project_builder.git project_builder
 cd project_builder
 pub get
-pub global activate --source path /path/to/cloned/project_builder
 ```
 
-This will create builder executable file and add it to your global pub folder. If you add this folder to your PATH variable (just follow instructions showed by pub global activate command) you will be able to run this project globally just by typing builder in your console.
+Now you can run it like this:
 
-> You can find more info for activate command [here][pubActivate].
+```sh
+dart bin/builder.dart
+```
 
 ## Commands
 Builder has 4 commands:
@@ -38,37 +33,37 @@ Builder has 4 commands:
 You can always use built-in help to get info about each command and available parameters by typing:
 
 ```sh
-builder --help
-builder help template
-builder help template list
-builder help template info
-builder help template copy
-builder help build
+dart bin/builder --help
+dart bin/builder help template
+dart bin/builder help template list
+dart bin/builder help template info
+dart bin/builder help template copy
+dart bin/builder help build
 ```
 
 > You can run all commands with **-v** flag which will enable verbose mode and give you extra information.
 
 ## Usage
-Here are some examples what you can do:
+Here are some examples what you can do.
 
 List all available templates:
 ```sh
-builder template list
+dart bin/builder template list
 ```
 
 Get information for template called *basic*
 ```sh
-builder template info -n basic
+dart bin/builder template info -n basic
 ```
 
 Create new template *custom_basic* by copying template *basic*
 ```sh
-builder template copy -s basic -t custom_basic
+dart bin/builder template copy -s basic -t custom_basic
 ```
 
 Build new dart projects called *project1* in directory */dart/project1* by using template *basic* and by replacing placeholders *var1* with *"some value 1"* and *var2* with *"some value 2"*
 ```sh
-builder build -n project1 -t basic -t "var1=some value 1" -t "var2= some value 2" -d "/dart/"
+dart bin/builder build -n project1 -t basic -t "var1=some value 1" -t "var2= some value 2" -d "/dart/"
 ```
 
 ## Templates
@@ -108,6 +103,7 @@ Where *{!name!}* and *{!authors!}* are placeholders.
 > Please note that you don't need to define *{!name!}* placeholder in *builder.json* because it will be automatically generated when running builder command from the name of the project you pass with *--name* option.
 
 ## Goals
+* fix issue with paths when running as global executable
 * add bunch of different useful templates
 * add default values for placeholders
 * add optional switches

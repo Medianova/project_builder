@@ -1,14 +1,22 @@
+// Copyright (c) 2016, Borut Jegrisnik. Please see the AUTHORS file for details.
+// All rights reserved. Use of this source code is governed by a BSD-style
+// license that can be found in the LICENSE file.
+
 part of project_builder.commands;
 
+/// Creates a copy of template
 class TemplateCopyCommand extends BaseCommand {
   final name = 'copy';
   final description = 'Copy template';
 
+  /// Source [Template] from which we will create a copy.
   Template _template;
 
+  /// Destination path
   String _dstPath;
   bool _verbose;
 
+  /// Define available options and flags.
   TemplateCopyCommand() {
     argParser.addOption('source', abbr: 's', help: 'Source template name');
     argParser.addOption('target', abbr: 't', help: 'Target template name');
@@ -17,6 +25,9 @@ class TemplateCopyCommand extends BaseCommand {
         abbr: 'v', help: 'Be verbose', negatable: false);
   }
 
+  /// Parse arguments and run this command.
+  ///
+  /// Load this [_template].
   void run() {
     if (argResults['source'] == null) {
       print(
@@ -45,6 +56,12 @@ class TemplateCopyCommand extends BaseCommand {
     copyTemplate();
   }
 
+  /// Copy template
+  ///
+  /// If this [_template] can't be loaded throw [MissingDirectoryException] or
+  /// [MissingBuilderException] exception.
+  /// If this [_template] can't be copied throw [NotLoadedException] or
+  /// [ExistsException] or [CreateResourceException] exception.
   void copyTemplate() {
     if (_verbose) {
       print('copying ' +
@@ -53,6 +70,7 @@ class TemplateCopyCommand extends BaseCommand {
           pens.info(_dstPath));
     }
 
+    // load source template
     try {
       _template.load();
     } on MissingDirectoryException catch (e) {
@@ -90,6 +108,7 @@ class TemplateCopyCommand extends BaseCommand {
       return;
     }
 
+    // copy files and folders
     try {
       _template.copy(_dstPath, verbose: _verbose);
     } on NotLoadedException catch (e) {

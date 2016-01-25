@@ -1,16 +1,26 @@
+// Copyright (c) 2016, Borut Jegrisnik. Please see the AUTHORS file for details.
+// All rights reserved. Use of this source code is governed by a BSD-style
+// license that can be found in the LICENSE file.
+
 part of project_builder.commands;
 
+// Build project from template
 class BuildCommand extends BaseCommand {
   final name = 'build';
   final description = 'Build new project based on a given template';
 
+  /// Source [_template].
   Template _template;
+  /// Project name
   String _projectName;
+  /// Path where to create project
   String _destinationPath;
+  /// List of placeholders
   List<String> _placeholders;
 
   bool _verbose;
 
+  /// Define available options and flags.
   BuildCommand() {
     argParser.addOption('name', abbr: 'n', help: 'Project name');
     argParser.addOption('template',
@@ -23,6 +33,9 @@ class BuildCommand extends BaseCommand {
         abbr: 'v', help: 'Be verbose', negatable: false);
   }
 
+  /// Parse arguments and run this command.
+  ///
+  /// Load this [_template].
   void run() {
     if (argResults['name'] == null) {
       print(pens.error('[ERROR]') + ' you have to specify project name');
@@ -50,7 +63,16 @@ class BuildCommand extends BaseCommand {
     build();
   }
 
+  /// Build project from source [_template].
+  ///
+  /// If this [_template] can't be loaded throw [MissingDirectoryException] or
+  /// [MissingBuilderException] exception.
+  /// If placeholders are not the same as defined in builder.json file throw
+  /// [MismatchPlaceholdersException] exception.
+  /// If this [_template] can't be copied throw [NotLoadedException] or
+  /// [ExistsException] or [CreateResourceException] exception.
   void build() {
+    // load template
     try {
       _template.load();
     } on MissingDirectoryException catch (e) {
@@ -88,6 +110,7 @@ class BuildCommand extends BaseCommand {
       return;
     }
 
+    // build project
     try {
       _template.build(_destinationPath, _projectName, _placeholders,
           verbose: _verbose);

@@ -1,5 +1,5 @@
 name: 'project_builder'
-version: 1.0.0
+version: 1.0.1
 description: A scaffolding generator for dart project from custom templates.
 author: Borut Jegrisnik <borut@medianova.hr>
 homepage: https://github.com/Medianova/project_builder
@@ -11,5 +11,5 @@ dependencies:
   args: "^0.13.2"
   ansicolor: "^0.0.9"
 
-executables:
-  builder:
+# executables:
+#   builder:

@@ -1,13 +1,20 @@
+// Copyright (c) 2016, Borut Jegrisnik. Please see the AUTHORS file for details.
+// All rights reserved. Use of this source code is governed by a BSD-style
+// license that can be found in the LICENSE file.
+
 part of project_builder.commands;
 
+/// Display template information
 class TemplateInfoCommand extends BaseCommand {
   final name = 'info';
   final description = 'Get template info';
 
+  /// Information about this [_template].
   Template _template;
 
   bool _verbose;
 
+  /// Define available options and flags.
   TemplateInfoCommand() {
     argParser.addOption('name', abbr: 'n');
 
@@ -15,6 +22,9 @@ class TemplateInfoCommand extends BaseCommand {
         abbr: 'v', help: 'Be verbose', negatable: false);
   }
 
+  /// Parse arguments and run this command.
+  ///
+  /// Load this [_template] and then display info.
   void run() {
     if (argResults['name'] == null) {
       print(pens.error('[ERROR]') + ' you have to specify template\'s name');
@@ -27,16 +37,25 @@ class TemplateInfoCommand extends BaseCommand {
     getTemplateInfo();
   }
 
+  /// Display template info.
   void getTemplateInfo() {
+    // first load template
     if (!loadTemplate()) {
       return;
     }
 
+    // then display template name and description
     printTemplateName();
+    // list defined placeholders
     printTemplatePlaceHolders();
+    // list files and folders that needs to be renamed
     printTemplateRenames();
   }
 
+  /// Try to load this [_template].
+  ///
+  /// If fails throw [MissingDirectoryException] or [MissingBuilderException]
+  /// exception.
   bool loadTemplate() {
     if (_verbose) {
       print('Trying to load template ' +
@@ -85,6 +104,7 @@ class TemplateInfoCommand extends BaseCommand {
     return true;
   }
 
+  /// Print this [_template] name and description.
   void printTemplateName() {
     print(pens.template(_template.name) +
         ' > ' +
@@ -92,6 +112,7 @@ class TemplateInfoCommand extends BaseCommand {
     print(pens.info('Location') + ': ' + _template.path);
   }
 
+  // List defined placeholders.
   void printTemplatePlaceHolders() {
     if (_template.builderJson.placeholders.length == 0) {
       print(pens.info('No placeholders found'));
@@ -103,6 +124,7 @@ class TemplateInfoCommand extends BaseCommand {
     }
   }
 
+  /// List files and folders that needs to be renamed.
   void printTemplateRenames() {
     if (_template.builderJson.renames.length == 0) {
       print(pens.info('Nothing to rename found'));
